@@ -2,14 +2,14 @@ import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from "formik";
 import * as Yup from "yup";
 import css from "./NoteForm.module.css";
 import { useId } from "react";
-import type { NoteTag } from "../../types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../services/noteService";
+import type { Note } from "../../types/note";
 
 interface NoteFormValues {
   title: string;
   content: string;
-  tag: NoteTag["tag"];
+  tag: Note["tag"];
 }
 
 const initialValues: NoteFormValues = {
