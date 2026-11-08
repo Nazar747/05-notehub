@@ -7,6 +7,7 @@ import css from "./App.module.css";
 import { fetchNotes } from "../../services/noteService";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import NoteForm from "../NoteForm/NoteForm";
 
 function App() {
   const [page, setPage] = useState<number>(1);
@@ -43,7 +44,11 @@ function App() {
         {isSuccess && data.notes.length !== 0 && (
           <NoteList notes={data.notes} />
         )}
-        {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+        {isModalOpen && (
+          <Modal onClose={() => setIsModalOpen(false)}>
+            <NoteForm onClose={() => setIsModalOpen(false)} />
+          </Modal>
+        )}
       </div>
     </>
   );
